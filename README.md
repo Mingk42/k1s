@@ -14,7 +14,7 @@ $ docker build -t lb docker/nginx
 
 ### LB
 ```
-$ sudo docker run -d --name blog-1 --rm blog
-$ sudo docker run -d --name blog-2 --rm blog
-$ sudo docker run -d --name nginx_lb -p 80:80 --link blog-1:blog-1 --link blog-2:blog-2 lb
+$ docker run -d --name blog-1 --rm blog
+$ docker run -d --name blog-2 --rm blog
+$ docker run -d --name nginx_lb -p 80:80 --link blog-1:blog-1 --link blog-2:blog-2 --rm lb
 ```
