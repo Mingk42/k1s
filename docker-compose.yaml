@@ -1,33 +1,16 @@
+name: samdul
 services:
-  blog_1:
+  blog:
     build: ./docker/httpd
-    container_name: blog-1
     ports:
-      - 8051:80 
-  blog_2:
-    build: ./docker/httpd
-    container_name: blog-2
-  blog_3:
-    build: ./docker/httpd
-    container_name: blog-3
-  blog_4:
-    build: ./docker/httpd
-    container_name: blog-4
+      - 80 
+    deploy:
+      mode: replicated
+      replicas: 1
   load_balancer:
     build: ./docker/nginx
     container_name: blog-lb
     ports:
       - 81:80
     depends_on:
-      - blog_1
-      - blog_2
-      - blog_3
-    links:
-      - blog_1
-      - blog_2
-      - blog_3
-    develop:
-      watch:
-        - action: sync+restart
-          path: ./docker/nginx/
-          target: /etc/nginx/conf.d/
+      - blog
