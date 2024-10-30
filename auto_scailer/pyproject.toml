@@ -1,0 +1,20 @@
+[project]
+name = "auto_scailer"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Mingk42", email = "xoals123456t@gmail.com"},
+]
+dependencies = [
+    "requests>=2.32.3",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.setuptools]
+package-dir={""="src/auto_scailer"}
